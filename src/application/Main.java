@@ -62,14 +62,8 @@ public final class Main extends JFrame implements ActionListener, ItemListener, 
 	static UIManager UIManager = new UIManager();
 	JFileChooser fileChooser_Java = new JFileChooser(System.getProperty("user.dir"));
 	JFileChooser fileChooser_CSharp = new JFileChooser(System.getProperty("user.dir"));
-	
-	// JPanel mainPanel1 = new JPanel(new GridLayout(1, 2));	//For the Node and Segment Lists (And Now, Search Bar)
-	JSplitPane mainPanel1 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-    // JPanel sub1PanelLeft = new JPanel();
-    // sub1PanelLeft.setLayout(new BoxLayout(sub1PanelLeft, BoxLayout.Y_AXIS));
-    // JSplitPane sub1PanelRight = new JSplitPane(JSplitPane.VERTICAL_SPLIT); 
-    
-    // JPanel sub2PanelLeft = new JPanel(new GridLayout(1, 2));
+
+    JSplitPane mainPanel1 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
     JSplitPane sub2PanelLeft = new JSplitPane(JSplitPane.VERTICAL_SPLIT); // Holds the Sub 3s
     JSplitPane sub3PanelLeft1 = new JSplitPane(JSplitPane.VERTICAL_SPLIT); // Holds TextArea and Char Count
     JSplitPane sub3PanelLeft2 = new JSplitPane(JSplitPane.VERTICAL_SPLIT); // Holds Label and Buttons
@@ -156,8 +150,6 @@ public final class Main extends JFrame implements ActionListener, ItemListener, 
 	    
 	    button_CSharpTrans.addActionListener(this);
 	    button_CSharpTrans.setActionCommand("Translate");
-	    
-	    //list_SegSelect.addListSelectionListener(listSeleMod_SegSelect);
 	    
 		textArea_Java.getDocument().addDocumentListener(new DocumentListener() {
 			public String getText() {
@@ -372,56 +364,6 @@ public final class Main extends JFrame implements ActionListener, ItemListener, 
 	public void itemStateChanged(ItemEvent e) {
 		
 	}
-	
-	/*
-	@Override
-	public void windowStateChanged(WindowEvent e) {		
-		System.out.println("aaaa");
-		resizeComponents();
-	}
-	
-	@Override
-	public void windowOpened(WindowEvent e) {		
-		System.out.println("opened");
-		resizeComponents();
-	}
-	
-	@Override
-	public void windowClosing(WindowEvent e) {		
-		System.out.println("closing");
-		resizeComponents();
-	}
-	
-	@Override
-	public void windowClosed(WindowEvent e) {		
-		System.out.println("closed");
-		resizeComponents();
-	}
-	
-	@Override
-	public void windowActivated(WindowEvent e) {		
-		System.out.println("activated");
-		resizeComponents();
-	}
-	
-	@Override
-	public void windowDeactivated(WindowEvent e) {		
-		System.out.println("deactivated");
-		resizeComponents();
-	}
-	
-	@Override
-	public void windowIconified(WindowEvent e) {		
-		System.out.println("iconified");
-		resizeComponents();
-	}
-	
-	@Override
-	public void windowDeiconified(WindowEvent e) {		
-		System.out.println("deiconified");
-		resizeComponents();
-	}
-	*/
 	
 	@Override
 	public void windowStateChanged(WindowEvent e) {				
@@ -695,24 +637,24 @@ public final class Main extends JFrame implements ActionListener, ItemListener, 
 	public static void main(String args[]) {
 		int fontSize = 12;
 		String[] keys = new String[]{"Label.font",
-									 "TextField.font",
-									 "TextArea.font",
-									 "Button.font",
-									 "CheckBox.font",
-									 "ComboBox.font",
-									 "MenuBar.font",
-									 "Menu.font",
-									 "MenuItem.font",
-									 "ScrollPane.font",
-									 "Frame.font",
-									 "Panel.font",
-									 "OptionPane.font",
-									 "FileChooser.font",
-									 "CheckBox.font",
-									 "CheckBoxMenuItem.font",
-									 "List.font",
-									 "SplitPane.font",
-									 "TabbedPane.font"};
+					    "TextField.font",
+					    "TextArea.font",
+					    "Button.font",
+					    "CheckBox.font",
+					    "ComboBox.font",
+					    "MenuBar.font",
+					    "Menu.font",
+					    "MenuItem.font",
+					    "ScrollPane.font",
+					    "Frame.font",
+					    "Panel.font",
+					    "OptionPane.font",
+					    "FileChooser.font",
+					    "CheckBox.font",
+					    "CheckBoxMenuItem.font",
+					    "List.font",
+					    "SplitPane.font",
+					    "TabbedPane.font"};
 		try {
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 			for (int i=0;i<keys.length;i++) {
@@ -731,12 +673,10 @@ public final class Main extends JFrame implements ActionListener, ItemListener, 
 				newText += s + "\n";
 			}
 			if ((newText.length()<header.length())||(!newText.substring(0, header.length()).equals(header))) {
-				//System.out.println("Header Mismatch in " + loca);
 				newText = null;
 			}
 			br.close();
 		} catch(Exception e) {
-			//System.out.println("Error in " + loca);
 			newText = null;
 		}
 		return(newText);
