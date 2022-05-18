@@ -92,8 +92,6 @@ public class FileOperators {
         
         antlr.JavaParser parser = new antlr.JavaParser(tokens);
         
-        //antlr.JavaTranslator translator = new antlr.JavaTranslator();
-        
         antlr.JavaListener listener = new antlr.JavaListener();
         for(int i=0;i<listener.tokens.size();i++) {
         	System.out.println(listener.tokens.get(i));
@@ -101,7 +99,6 @@ public class FileOperators {
         
         ParseTree tree = parser.compilationUnit();
         
-        //System.out.println(tree.toStringTree(parser));
         ParseTreeWalker.DEFAULT.walk(listener, tree);
         int indent = 0, forDepth = 0;
         boolean forLoop = false;
