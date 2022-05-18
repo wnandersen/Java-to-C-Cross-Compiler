@@ -70,7 +70,6 @@ public final class Config extends JFrame implements ActionListener, ItemListener
 	    	@Override
 	    	public void windowClosing(WindowEvent e) {
 	    	    setVisible(false);
-	    	    // textfield_openDFolder.setText(parent.defaultDir);
 	    	}
 	    });
 	    
@@ -100,13 +99,7 @@ public final class Config extends JFrame implements ActionListener, ItemListener
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String cmd = e.getActionCommand();
-		/* if (cmd.equals("Save")) {
-			System.out.println("Starting Config Save");
-			parent.defaultDir = textfield_openDFolder.getText();
-			parent.configToString();
-			parent.conv.writeTextTo(parent.configData, parent.configFile);
-			setVisible(false);
-		} */
+		
 		if (cmd.equals("Close")) {
 			setVisible(false);
 		}
