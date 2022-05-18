@@ -6,11 +6,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import javafx.scene.control.TextArea;
 //Currently on line 
 public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
-	/*public TypeVisitor parse(JavaParser parser) {
-		TypeVisitor typeVisitor = new TypeVisitor();
-		Type traverseResult = typeVisitor.visit(parser.compilationUnit());
-		return traverseResult;
-	}*/
+	
 	/*Classes left to implement
 		RULE_enumBodyDeclarations = 14, RULE_genericMethodDeclaration = 23, RULE_genericConstructorDeclaration = 24, 
 		RULE_constDeclaration = 29, RULE_constantDeclarator = 30,  RULE_genericInterfaceMethodDeclaration = 33,  
@@ -30,6 +26,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 		RULE_nonWildcardTypeArgumentsOrDiamond = 96, RULE_nonWildcardTypeArguments = 97, RULE_typeList = 98,   
 		RULE_typeArguments = 101, RULE_superSuffix = 102, RULE_explicitGenericInvocationSuffix = 103
 	 */
+	
 	private static class compilationUnitVisitor extends JavaParserBaseVisitor<String>{
 		private String compilationUnit;
 		
@@ -49,6 +46,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 		return compilationUnit;
 		}
 	}
+	
 	private static class importDeclarationVisitor extends JavaParserBaseVisitor<String>{
 		private String importdeclaration;
 		
@@ -57,6 +55,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 			return importdeclaration;
 		}
 	}
+	
 	private static class packageDeclarationVisitor extends JavaParserBaseVisitor<String>{
 		private String packagedeclaration;
 		
@@ -100,6 +99,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 		return enumdeclaration;
 		}
 	}
+	
 	private static class EnumConstantsVisitor extends JavaParserBaseVisitor<String>{
 		private String enumconstants;
 		EnumConstantVisitor enumConstantVisitor=new EnumConstantVisitor();
@@ -113,6 +113,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 		return enumconstants;
 		}
 	}
+	
 	private static class EnumConstantVisitor extends JavaParserBaseVisitor<String>{
 		private String enumconstant;
 		
@@ -122,6 +123,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 		return enumconstant;
 		}
 	}
+	
 	private static class classDeclarationVisitor extends JavaParserBaseVisitor<String>{
 		private String classdeclaration;
 		typeParametersVisitor TypeParametersVisitor=new typeParametersVisitor();
@@ -138,6 +140,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 		return classdeclaration;
 		}
 	}
+	
 	private static class FieldDeclarationVisitor extends JavaParserBaseVisitor<String>{
 		private String fielddeclaration;
 		typeTypeVisitor TypeTypeVisitor=new typeTypeVisitor();
@@ -150,6 +153,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 			return fielddeclaration;
 		}
 	}
+	
 	private static class ConstructorDeclarationVisitor extends JavaParserBaseVisitor<String>{
 		private String constructordeclaration;
 		FormalParametersVisitor formalParameters=new FormalParametersVisitor();
@@ -161,6 +165,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 				return constructordeclaration;
 		}
 	}
+	
 	private static class ClassBodyVisitor extends JavaParserBaseVisitor<String>{
 		private String classbody;
 		
@@ -175,6 +180,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 		return classbody;
 		}
 	}
+	
 	private static class ClassBodyDeclarationVisitor extends JavaParserBaseVisitor<String>{
 		private String classbodydeclaration;
 		
@@ -192,6 +198,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 		return classbodydeclaration;
 		}
 	}
+	
 	private static class typeParametersVisitor extends JavaParserBaseVisitor<String>{
 		private String typeparameters;
 		typeParameterVisitor TypeParameterVisitor=new typeParameterVisitor();
@@ -204,6 +211,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 		return typeparameters;
 		}
 	}
+	
 	private static class typeParameterVisitor extends JavaParserBaseVisitor<String>{
 		private String typeparameter;
 		typeBoundVisitor TypeBoundVisitor=new typeBoundVisitor();
@@ -216,6 +224,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 		return typeparameter;
 		}
 	}
+
 	private static class typeBoundVisitor extends JavaParserBaseVisitor<String>{
 		private String typebound;
 		
@@ -225,6 +234,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 		return typebound;
 		}
 	}
+	
 	private static class interfaceDeclarationVisitor extends JavaParserBaseVisitor<String>{
 		private String classdeclaration;
 		
@@ -240,6 +250,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 		return classdeclaration;
 		}
 	}
+	
 	private static class InterfaceBodyVisitor extends JavaParserBaseVisitor<String>{
 		private String interfacebody;
 		
@@ -254,6 +265,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 		return interfacebody;
 		}
 	}
+	
 	private static class InterfaceBodyDeclarationVisitor extends JavaParserBaseVisitor<String>{
 		private String interfacebodydeclaration;
 		
@@ -288,6 +300,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 		return modifier;
 		}
 	}
+	
 	private static class ClassOrInterfaceModifierVisitor extends JavaParserBaseVisitor<String>{
 		private String classorinterfacemodifier;
 		
@@ -311,6 +324,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 		return methodcall;
 		}
 	}
+	
 	private static class memberDeclarationVisitor extends JavaParserBaseVisitor<String>{
 		private String memberdeclaration;
 		ConstructorDeclarationVisitor constructorDeclarationVisitor=new ConstructorDeclarationVisitor();
@@ -329,6 +343,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 		return memberdeclaration;
 		}
 	}
+	
 	private static class methodDeclarationVisitor extends JavaParserBaseVisitor<String>{
 		private String methoddeclaration;
 		
@@ -348,6 +363,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 		return methoddeclaration;
 		}
 	}
+	
 	private static class GenericMethodDeclarationVisitor extends JavaParserBaseVisitor<String>{
 		private String genericmethoddeclaration;
 		
@@ -357,6 +373,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 		return genericmethoddeclaration;
 		}
 	}
+	
 	private static class InterfaceMethodModifierVisitor extends JavaParserBaseVisitor<String>{
 		private String interfacemethodmodifierdeclaration;
 		
@@ -365,6 +382,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 			return interfacemethodmodifierdeclaration;
 		}
 	}
+	
 	private static class interfaceMemberDeclarationVisitor extends JavaParserBaseVisitor<String>{
 		private String interfacememberdeclaration;
 		
@@ -379,6 +397,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 		return interfacememberdeclaration;
 		}
 	}
+	
 	private static class InterfaceMethodDeclarationVisitor extends JavaParserBaseVisitor<String>{
 		private String interfacemethoddeclaration;
 		
@@ -418,6 +437,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 				return localvariabledeclaration;
 		}
 	}
+	
 	private static class FormalParametersVisitor extends JavaParserBaseVisitor<String>{
 		private String formalparameters;
 		FormalParameterListVisitor formalParameterListVisitor=new FormalParameterListVisitor();
@@ -430,6 +450,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 			return formalparameters;
 		}
 	}
+	
 	private static class FormalParameterListVisitor extends JavaParserBaseVisitor<String>{
 		private String formalparameterlist;
 		FormalParameterVisitor formalParameterVisitor=new FormalParameterVisitor();
@@ -442,6 +463,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 			return formalparameterlist;
 		}
 	}
+	
 	private static class FormalParameterVisitor extends JavaParserBaseVisitor<String>{
 		private String formalparameter;
 		typeTypeVisitor TypeTypeVisitor=new typeTypeVisitor();
@@ -454,6 +476,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 			return formalparameter;
 		}
 	}
+	
 	private static class typeTypeVisitor extends JavaParserBaseVisitor<String>{
 		private String typetype;
 		
@@ -482,15 +505,16 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 			return primitivetype;
 		}
 	}
+	
 	private static class ClassTypeVisitor extends JavaParserBaseVisitor<String>{
 		private String classtype;
-		
 		
 		public String visitClassType(JavaParser.ClassTypeContext ctx) {
 			classtype = ctx.getText();
 			return classtype;
 		}
 	}
+	
 	private static class VariableDeclaratorsVisitor extends JavaParserBaseVisitor<String>{
 		private String variabledeclarators;
 		
@@ -504,6 +528,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 			return variabledeclarators;
 		}
 	}
+	
 	private static class VariableDeclaratorVisitor extends JavaParserBaseVisitor<String>{
 		private String variabledeclarator;
 		VariableDeclaratorIdVisitor variableDeclaratorIdVisitor=new VariableDeclaratorIdVisitor();
@@ -520,6 +545,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 			return variabledeclarator;
 		}
 	}
+	
 	private static class VariableDeclaratorIdVisitor extends JavaParserBaseVisitor<String>{
 		private String variabledeclaratorid;
 		public String visitVariableDeclaratorId(JavaParser.VariableDeclaratorIdContext ctx) {
@@ -527,6 +553,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 			return variabledeclaratorid;
 		}
 	}
+
 	private static class VariableModifierVisitor extends JavaParserBaseVisitor<String>{
 		private String variablemodifier;
 		
@@ -535,6 +562,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 			return variablemodifier;
 		}
 	}
+	
 	private static class classOrInterfaceTypeVisitor extends JavaParserBaseVisitor<String>{
 		private String classorinterfacetype;
 		
@@ -543,6 +571,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 			return classorinterfacetype;
 		}
 	}
+	
 	private static class typeTypeorVoidVisitor extends JavaParserBaseVisitor<String>{
 		private String typetypeorvoid;
 		
@@ -551,6 +580,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 				return typetypeorvoid;
 		}
 	}
+	
 	private static class methodBodyVisitor extends JavaParserBaseVisitor<String>{
 		private String methodbody;
 		
@@ -565,6 +595,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 		return methodbody;
 		}
 	}
+	
 	private static class BlockVisitor extends JavaParserBaseVisitor<String>{
 		private String block;
 		
@@ -579,6 +610,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 		return block;
 		}
 	}
+	
 	private static class BlockStatementVisitor extends JavaParserBaseVisitor<String>{
 		private String blockstatement;
 		
@@ -596,6 +628,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 		return blockstatement;
 		}
 	}
+	
 	private static class StatementVisitor extends JavaParserBaseVisitor<String>{
 		private String statement;
 		
@@ -610,6 +643,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 		return statement;
 		}
 	}
+	
 	private static class ExpressionListVisitor extends JavaParserBaseVisitor<String>{
 		private String expressionlist;
 		
@@ -648,6 +682,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 		return expression;
 		}
 	}
+	
 	private static class ArrayInitializerVisitor extends JavaParserBaseVisitor<String>{
 		private String arrayinitializaer;
 		
@@ -662,6 +697,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 		return arrayinitializaer;
 		}
 	}
+	
 	private static class VariableInitializerVisitor extends JavaParserBaseVisitor<String>{
 		private String variableinitializaer;
 		
@@ -679,6 +715,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 		return variableinitializaer;
 		}
 	}
+	
 	public static class CreatorVisitor extends JavaParserBaseVisitor<String>{
 		 private String creator;
 		 ClassCreatorRestVisitor classCreatorRestVisitor=new ClassCreatorRestVisitor();
@@ -694,6 +731,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 			 return creator;
 		 }
 	}
+	
 	public static class CreatedNameVisitor extends JavaParserBaseVisitor<String>{
 		 private String createdname;
 		 
@@ -703,6 +741,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 			 return createdname;
 		 }
 	}
+	
 	public static class ClassCreatorRestVisitor extends JavaParserBaseVisitor<String>{
 		 private String classcreatorrest;
 		 ArgumentsVisitor argumentsVisitor=new ArgumentsVisitor();
@@ -715,6 +754,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 			 return classcreatorrest;
 		 }
 	}
+	
 	public static class ArgumentsVisitor extends JavaParserBaseVisitor<String>{
 		 private String arguments;
 		 
@@ -723,6 +763,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 			 return arguments;
 		 }
 	}
+	
 	private static class PrimaryVisitor extends JavaParserBaseVisitor<String>{
 		private String primary;
 		
@@ -753,6 +794,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 				 return literal;
 		}
 	}
+	
 	public static class integerLiteralVisitor extends JavaParserBaseVisitor<String>{
 		 private String integerliteral;
 		 
@@ -761,6 +803,7 @@ public class JavaTranslator extends antlr.JavaParserBaseVisitor<Void> {
 			 return integerliteral;
 		 }
 	}
+	
 	public static class floatLiteralVisitor extends JavaParserBaseVisitor<String>{
 		 private String floatliteral;
 		 
