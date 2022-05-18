@@ -11,11 +11,13 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class JavaParser extends Parser {
+	
 	static { RuntimeMetaData.checkVersion("4.9.2", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
-	protected static final PredictionContextCache _sharedContextCache =
-		new PredictionContextCache();
+	
+	protected static final PredictionContextCache _sharedContextCache = new PredictionContextCache();
+	
 	public static final int
 		ABSTRACT=1, ASSERT=2, BOOLEAN=3, BREAK=4, BYTE=5, CASE=6, CATCH=7, CHAR=8, 
 		CLASS=9, CONST=10, CONTINUE=11, DEFAULT=12, DO=13, DOUBLE=14, ELSE=15, 
@@ -34,6 +36,7 @@ public class JavaParser extends Parser {
 		DIV_ASSIGN=96, AND_ASSIGN=97, OR_ASSIGN=98, XOR_ASSIGN=99, MOD_ASSIGN=100, 
 		LSHIFT_ASSIGN=101, RSHIFT_ASSIGN=102, URSHIFT_ASSIGN=103, ARROW=104, COLONCOLON=105, 
 		AT=106, ELLIPSIS=107, WS=108, COMMENT=109, LINE_COMMENT=110, IDENTIFIER=111;
+	
 	public static final int
 		RULE_compilationUnit = 0, RULE_packageDeclaration = 1, RULE_importDeclaration = 2, 
 		RULE_typeDeclaration = 3, RULE_modifier = 4, RULE_classOrInterfaceModifier = 5, 
@@ -71,6 +74,7 @@ public class JavaParser extends Parser {
 		RULE_nonWildcardTypeArgumentsOrDiamond = 96, RULE_nonWildcardTypeArguments = 97, 
 		RULE_typeList = 98, RULE_typeType = 99, RULE_primitiveType = 100, RULE_typeArguments = 101, 
 		RULE_superSuffix = 102, RULE_explicitGenericInvocationSuffix = 103, RULE_arguments = 104;
+	
 	private static String[] makeRuleNames() {
 		return new String[] {
 			"compilationUnit", "packageDeclaration", "importDeclaration", "typeDeclaration", 
@@ -102,6 +106,7 @@ public class JavaParser extends Parser {
 			"explicitGenericInvocationSuffix", "arguments"
 		};
 	}
+	
 	public static final String[] ruleNames = makeRuleNames();
 
 	private static String[] makeLiteralNames() {
@@ -122,7 +127,9 @@ public class JavaParser extends Parser {
 			"'>>='", "'>>>='", "'->'", "'::'", "'@'", "'...'"
 		};
 	}
+	
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
+	
 	private static String[] makeSymbolicNames() {
 		return new String[] {
 			null, "ABSTRACT", "ASSERT", "BOOLEAN", "BREAK", "BYTE", "CASE", "CATCH", 
@@ -143,7 +150,9 @@ public class JavaParser extends Parser {
 			"COLONCOLON", "AT", "ELLIPSIS", "WS", "COMMENT", "LINE_COMMENT", "IDENTIFIER"
 		};
 	}
+	
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
+	
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
 	/**
