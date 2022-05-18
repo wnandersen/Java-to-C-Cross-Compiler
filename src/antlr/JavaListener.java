@@ -7,23 +7,6 @@ import org.antlr.v4.runtime.tree.ParseTree;
 public class JavaListener extends JavaParserBaseListener {
 	public ArrayList<String> tokens = new ArrayList<String>();
 	
-	/*
-	@Override
-	public void enterCompilationUnit(JavaParser.CompilationUnitContext ctx) {
-	}
-	
-	@Override
-	public void exitCompilationUnit(JavaParser.CompilationUnitContext ctx) {
-	}*/
-	/*
-	@Override
-	public void enterTypeDeclaration(JavaParser.TypeDeclarationContext ctx) {
-	}
-	
-	@Override
-	public void exitTypeDeclaration(JavaParser.TypeDeclarationContext ctx) {
-	}*/
-	
 	@Override
 	public void enterClassOrInterfaceModifier(JavaParser.ClassOrInterfaceModifierContext ctx) {
 		tokens.add(ctx.getText());
@@ -78,37 +61,7 @@ public class JavaListener extends JavaParserBaseListener {
 			tokens.add(ctx.getChild(ctx.getChildCount() - 1).getText());
 		}
 	}
-	/*
-	@Override
-	public void enterClassBodyDeclaration(JavaParser.ClassBodyDeclarationContext ctx) {
-	}
 
-	@Override
-	public void exitClassBodyDeclaration(JavaParser.ClassBodyDeclarationContext ctx) {
-	}*/
-	/*
-	@Override
-	public void enterModifier(JavaParser.ModifierContext ctx) { 
-	}
-
-	@Override
-	public void exitModifier(JavaParser.ModifierContext ctx) {
-	}*/
-	/*
-	@Override
-	public void enterMemberDeclaration(JavaParser.MemberDeclarationContext ctx) { 
-		System.out.println("Member: "+ctx.getChild(0).getText());
-		System.out.println("Rule number: "+ctx.getChild(0).getChild(0).getText().getRuleIndex());
-		//if(ctx.getChild(0).getRuleIndex()==26) {
-		//	tokens.add(";");
-		//}
-		
-		
-	}
-	/*
-	@Override
-	public void exitMemberDeclaration(JavaParser.MemberDeclarationContext ctx) {
-	}*/
 	@Override
 	public void enterFieldDeclaration(JavaParser.FieldDeclarationContext ctx) { 
 		//System.out.println("Member: "+ctx.getChild(0).getText());
@@ -123,7 +76,6 @@ public class JavaListener extends JavaParserBaseListener {
 			tokens.add(ctx.getChild(0).getText());
 			if (ctx.getChild(1).getChildCount() == 0) {
 				tokens.add(ctx.getChild(1).getText());
-				//System.out.println("Members: "+ctx.getChild(1).getText());
 			}
 		}
 	}
@@ -156,7 +108,6 @@ public class JavaListener extends JavaParserBaseListener {
 		if (ctx.getChild(0).getChildCount() == 0) {
 			tokens.add(ctx.getChild(0).getText());
 		}
-		//System.out.println("Parameters: "+ctx.getChild(0).getText());
 	}
 	
 	@Override
@@ -168,18 +119,6 @@ public class JavaListener extends JavaParserBaseListener {
 			tokens.add(ctx.getChild(2).getText());
 		}
 	}
-	/*
-	@Override
-	public void enterFormalParameterList(JavaParser.FormalParameterListContext ctx) {
-	}
-
-	@Override
-	public void exitFormalParameterList(JavaParser.FormalParameterListContext ctx) {
-	}*/
-	/*
-	@Override
-	public void enterFormalParameter(JavaParser.FormalParameterContext ctx) {
-	}*/
 
 	@Override
 	public void exitFormalParameter(JavaParser.FormalParameterContext ctx) {
@@ -192,14 +131,6 @@ public class JavaListener extends JavaParserBaseListener {
 			tokens.add(",");
 		}
 	}
-	/*
-	@Override
-	public void enterMethodBody(JavaParser.MethodBodyContext ctx) {
-	}
-
-	@Override
-	public void exitMethodBody(JavaParser.MethodBodyContext ctx) {
-	}*/
 
 	@Override
 	public void enterBlock(JavaParser.BlockContext ctx) {
@@ -225,17 +156,12 @@ public class JavaListener extends JavaParserBaseListener {
 			tokens.add(ctx.getChild(ctx.getChildCount() - 1).getText());
 		}
 	}
-	/*
-	@Override
-	public void enterTypeType(JavaParser.TypeTypeContext ctx) {
-	}*/
 
 	@Override
 	public void exitTypeType(JavaParser.TypeTypeContext ctx) {
 		for (ParseTree p : ctx.children) {
 			if (p.getChildCount() == 0) {
 				tokens.add(p.getText());
-				//System.out.println(p.getText());
 			}
 		}
 		var parent = ctx.getParent();
@@ -247,10 +173,6 @@ public class JavaListener extends JavaParserBaseListener {
 	public void enterVariableDeclaratorId(JavaParser.VariableDeclaratorIdContext ctx) {
 		//tokens.add(ctx.getText());
 	}
-	/*
-	@Override
-	public void exitVariableDeclaratorId(JavaParser.VariableDeclaratorIdContext ctx) {
-	}*/
 
 	@Override
 	public void enterVariableDeclarator(JavaParser.VariableDeclaratorContext ctx) {
@@ -261,7 +183,6 @@ public class JavaListener extends JavaParserBaseListener {
 		if(ctx.getChild(1)!=null) {
 			if(ctx.getChild(2).getText().contains("new")) {
 				tokens.add(ctx.getChild(2).getText().replaceAll("new.*", "new "));
-				//System.out.println("Child1: "+ctx.getChild(2).getText());
 				if(!ctx.getChild(2).getText().contains("int")&&
 						!ctx.getChild(2).getText().contains("String")&&
 						!ctx.getChild(2).getText().contains("double")&&
@@ -270,7 +191,7 @@ public class JavaListener extends JavaParserBaseListener {
 						!ctx.getChild(2).getText().contains("long")&&
 						!ctx.getChild(2).getText().contains("short")&&
 						!ctx.getChild(2).getText().contains("Node")) {
-							tokens.add(ctx.getChild(2).getText().replace("new", ""));
+						tokens.add(ctx.getChild(2).getText().replace("new", ""));
 				}
 			}
 		}
@@ -280,29 +201,15 @@ public class JavaListener extends JavaParserBaseListener {
 	
 	@Override
 	public void exitVariableDeclarators(JavaParser.VariableDeclaratorsContext ctx) { 
-		//System.out.println("Variable Declarators rule index: "+ctx.getParent().getRuleIndex());
 		if(ctx.getParent().getRuleIndex()==26) {
 			tokens.add(";");
 		}
 	}
-	/*
-	@Override
-	public void enterLocalVariableDeclaration(JavaParser.LocalVariableDeclarationContext ctx) {
-	}
-
-	@Override
-	public void exitLocalVariableDeclaration(JavaParser.LocalVariableDeclarationContext ctx) {
-	}*/
 
 	@Override
 	public void enterPrimitiveType(JavaParser.PrimitiveTypeContext ctx) {
 		tokens.add(ctx.getText());
-		//System.out.println("Variable Type: "+ctx.getText());
 	}
-	/*
-	@Override
-	public void exitPrimitiveType(JavaParser.PrimitiveTypeContext ctx) {
-	}*/
 	
 	@Override
 	public void enterStatement(JavaParser.StatementContext ctx) {
@@ -355,11 +262,6 @@ public class JavaListener extends JavaParserBaseListener {
 			}
 		}
 	}
-	
-	/*
-	@Override
-	public void enterExpression(JavaParser.ExpressionContext ctx) {
-	}*/
 
 	@Override
 	public void exitExpression(JavaParser.ExpressionContext ctx) {
@@ -368,16 +270,13 @@ public class JavaListener extends JavaParserBaseListener {
 				if (ctx.getParent().getChild(i).getChildCount() == 0&&ctx.getParent().getParent().getRuleIndex()!=89&&
 						ctx.getParent().getParent().getParent().getRuleIndex()!=93) {
 					tokens.add(ctx.getParent().getChild(i).getText());
-					//System.out.println("Random 1st index: "+ctx.getParent().getChild(0).getText());
 				}
 			}
 		}
 		if (ctx.getParent().getRuleIndex() == 77) {
 			tokens.add(";");
 		}
-		if(ctx.getChild(0).getText().contains("[")) {
-			//System.out.println("Bracket: "+ctx.getChild(0).getText());
-		}
+		if(ctx.getChild(0).getText().contains("[")) {}
 	}
 	
 	@Override
@@ -386,7 +285,6 @@ public class JavaListener extends JavaParserBaseListener {
 				&&ctx.getParent().getParent().getParent().getRuleIndex()!=89&&
 				ctx.getParent().getParent().getParent().getParent().getRuleIndex()!=93) {
 			tokens.add(ctx.getChild(0).getText());
-			//System.out.println("Literal: "+ctx.getText());
 		}
 		
 	}
@@ -395,7 +293,6 @@ public class JavaListener extends JavaParserBaseListener {
 	public void exitPrimary(JavaParser.PrimaryContext ctx) {
 		if (ctx.getChildCount() > 1 && ctx.getChild(ctx.getChildCount() - 1).getChildCount() == 0) {
 			tokens.add(ctx.getChild(ctx.getChildCount() - 1).getText());
-			//System.out.println("Literal: "+ctx.getChild(ctx.getChildCount() - 1).getText());
 		}
 		if (ctx.getParent().getParent().getParent().getRuleIndex() == 38) {
 			tokens.add(",");
@@ -412,10 +309,6 @@ public class JavaListener extends JavaParserBaseListener {
 	public void exitMethodCall(JavaParser.MethodCallContext ctx) {
 		tokens.add(ctx.getChild(ctx.getChildCount() - 1).getText());
 	}
-	
-	/*@Override
-	public void enterForControl(JavaParser.ForControlContext ctx) {
-	}*/
 	
 	@Override
 	public void exitForControl(JavaParser.ForControlContext ctx) {
@@ -447,6 +340,8 @@ public class JavaListener extends JavaParserBaseListener {
 			tokens.add(ctx.getChild(2).getText());
 		}
 	}
+	
+	// POSSIBLE ORIGIN OF ARRAY BUG //
 	@Override 
 	public void enterArrayCreatorRest(JavaParser.ArrayCreatorRestContext ctx) { 
 		if (ctx.getChild(0).getChildCount() == 0) {
@@ -471,16 +366,6 @@ public class JavaListener extends JavaParserBaseListener {
 		if(ctx.getText().contains("ArrayList<")||ctx.getText().contains("LinkedList<")||ctx.getText().contains("HashMap<")||ctx.getText().contains("Set<")) {
 			tokens.add(ctx.getText().replace("<.*", ""));
 		}
-		/*
-		 public class Program{
-	public static void Main(string[]args){
-		ArrayList<String> thelist=new ArrayList<String>();
-		thelist.add("FirstElement");
-		thelist.add("SecondElement");
-		System.out.println(thelist);
-	}
-}
-		 */
 	}
 	
 	@Override 
@@ -495,6 +380,5 @@ public class JavaListener extends JavaParserBaseListener {
 		if (ctx.getChild(ctx.getChildCount() - 1).getChildCount() == 0) {
 			tokens.add(ctx.getChild(ctx.getChildCount() - 1).getText());
 		}
-		//System.out.println(ctx.getChild(ctx.getChildCount() - 1).getText());
 	}
 }
