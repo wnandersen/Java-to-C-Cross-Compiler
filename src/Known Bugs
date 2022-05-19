@@ -1,0 +1,13 @@
+// Current known bugs //
+
+~ Return Bug, translator will remove "()" in return statement "return ();" and completly omit omit return statement if "return;" is used (Java side) and leave semicolon.
+
+~ Loop interputors: break, continue, return, do not translate at all.
+
+~ Does not allow variables to be decalred on the same line, removes comas and places them all on the same line.
+
+~ Left side incrementors and decrementors do not translate at all " ++x, --x ".
+
+~ Array Bug, translator will add a copy of the contents in the square brackets on the next line if the array is declared and size is declared WITH other variables. "int [][] arr= new int [x][y]".
+
+~ Type casting in general does not seem to translate in any way.
